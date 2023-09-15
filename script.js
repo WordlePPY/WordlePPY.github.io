@@ -1,6 +1,15 @@
 let diccionario = ["APPLE", "MOUSE", "WINGS", "YOUTH", "SWO0D"];
-const palabra = diccionario[Math.floor(Math.random() * diccionario.length)];
-Math.floor(Math.random() * 10) + 1;
+let indice = Math.floor(Math.random() * diccionario.length-1) + 1;
+console.log(indice);
+let palabra;
+fetch("https://random-word-api.herokuapp.com/word?length=5&lang=es")
+     .then(response => response.json())
+     .then(response =>{
+        console.log(response)
+        palabra=response[0].toUpperCase()
+        console.log(palabra)
+     })
+     .catch(err => console.error(err));
 let intentos = 6;
 
 const button = document.getElementById("guess-button");
